@@ -1,3 +1,5 @@
+package runner;
+
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -19,7 +21,7 @@ public abstract class BaseTest {
 
     @AfterMethod
     protected void afterMethod() {
-      // driver.quit();
+      driver.quit();
     }
 
     protected WebDriver getDriver() {
