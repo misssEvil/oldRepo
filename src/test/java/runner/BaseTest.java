@@ -11,8 +11,8 @@ public abstract class BaseTest {
     private JavascriptExecutor js;
 
     private WebDriverWait wait;
-    public static final String BASE_URL = "http://www.99-bottles-of-beer.net/";
-    public static final String SUBMIT_NEW_LANG_URL = "http://www.99-bottles-of-beer.net/submitnewlanguage.html";
+    /*public static final String BASE_URL = "http://www.99-bottles-of-beer.net/";
+    public static final String SUBMIT_NEW_LANG_URL = "http://www.99-bottles-of-beer.net/submitnewlanguage.html";*/
 
     @BeforeMethod
     protected void driverSetUp() {
