@@ -55,7 +55,7 @@ public final class BaseUtils {
         WebDriverManager.chromedriver().setup();
     }
 
-    static Properties getProperties() {
+    public static Properties getProperties() {
         return properties;
     }
 
