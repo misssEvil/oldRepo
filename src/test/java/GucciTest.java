@@ -59,7 +59,7 @@ public class GucciTest extends BaseTest {
     }
 
     @Test
-    public void searchBoxTest(){
+    public void searchGBoxTest(){
 
         getDriver().get("https://1lib.tw");
         getDriver().findElement(By.id("searchFieldx")).sendKeys("untamed");
