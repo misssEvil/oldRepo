@@ -1,15 +1,62 @@
 package runner;
 
+import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.Properties;
 
 public final class BaseTestUtils {
-    public static final String CHROME_DRIVER = "webdriver.chrome.driver";
-    public static final String DRIVER_PATH = "C://chromedriver_win32/chromedriver.exe";
+
+    private static Properties properties;
+    private static final ChromeOptions chromeOptions;
+
+     private static void initProperties() {
+         if (properties == null){
+             properties = new Properties();
+             properties.getProperty("default.chrome_options", System.getenv("chrome_options"));
+         }
+         else {
+
+             try {
+                 InputStream inputStream = BaseTestUtils.class.getClassLoader().getResourceAsStream("local.properties");
+                 properties.load(inputStream);
+             } catch (IOException ex) {
+
+             }
+         }
+     }
+
+     static {
+         initProperties();
+
+         chromeOptions = new ChromeOptions();
+         String options = properties.getProperty("default.chrome_options");
+         if (options != null){
+             for (String argument : options.split(";")){
+                 chromeOptions.addArguments(argument);
+             }
+         }
+         WebDriverManager.chromedriver().setup();
+     }
+
+
 
     static WebDriver createDriver() {
-        System.setProperty("webdriver.chrome.driver", "C://chromedriver_win32/chromedriver.exe");
-        WebDriver driver = new ChromeDriver();
+
+        WebDriver driver = new ChromeDriver(chromeOptions);
         return driver;
     }
+
+    static Properties getProperties(){
+         return properties;
+
+    }
+
+
+
+
 }
