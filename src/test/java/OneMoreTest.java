@@ -8,7 +8,7 @@ public class OneMoreTest extends BaseTest {
     @Test
     public void oneMoreWelcomeTest(){
         getDriver().get("http://localhost:8080");
-        Assert.assertEquals(getDriver().findElement(By.xpath("//div/h1")).getText(),  "Welcome to Jenkins! OneMore");
+        Assert.assertEquals(getDriver().findElement(By.xpath("//div/h1")).getText(),  "Welcome to Jenkins!");
 
     }
 
