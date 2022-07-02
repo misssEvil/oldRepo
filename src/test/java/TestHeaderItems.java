@@ -10,35 +10,22 @@ import runner.LibraryUtils;
 
 public class TestHeaderItems extends BaseTest {
 
-    @BeforeTest
-    public void setUp(){
-        System.out.println("lala");
-    }
 
     @BeforeMethod
     public void getUrl(){
-        getDriver().get(LibraryUtils.LIB_DEFAULT_URL);
+        getDriver().get("http://www.99-bottles-of-beer.net/");
     }
 
-    @Ignore
-    @Test (priority = 1)
+
+    @Test
     public void checkItemBooks() {
         getDriver().findElement(By.xpath(LibraryUtils.HEAD_L_ITEMS_BOOKS)).click();
         Assert.assertEquals(getDriver().getTitle(), "Electronic library. Download books free. Finding books");
     }
 
-    @Ignore
-    @Test (priority = 2)
-    public void checkItemArticles(){
-        getDriver().findElement(By.xpath(LibraryUtils.HEAD_L_ITEMS_ARTICLES)).click();
-        Assert.assertEquals(getDriver().getTitle(), "booksc.org");
-    }
-
-    @Test (priority = 3)
+    @Test
     public void checkItemHome(){
         getDriver().findElement(By.xpath(LibraryUtils.HEAD_L_ITEMS_HOME)).click();
         Assert.assertEquals(getDriver().getTitle(), "Z-Library. The world's largest ebook library.");
     }
-
-
 }
