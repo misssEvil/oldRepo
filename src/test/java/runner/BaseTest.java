@@ -16,7 +16,7 @@ public abstract class BaseTest {
 
     @BeforeMethod
     protected void driverSetUp() {
-        driver = BaseTestUtils.createDriver();
+        driver = BaseUtils.createDriver();
     }
 
     @AfterMethod

@@ -9,7 +9,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
 
-public final class BaseTestUtils {
+public final class BaseUtils {
 
     private static Properties properties;
     private static final ChromeOptions chromeOptions;
@@ -22,7 +22,7 @@ public final class BaseTestUtils {
              }
              else {
                  try {
-                     InputStream inputStream = BaseTestUtils.class.getClassLoader().getResourceAsStream("local.properties");
+                     InputStream inputStream = BaseUtils.class.getClassLoader().getResourceAsStream("local.properties");
                      properties.load(inputStream);
                  } catch (IOException ex) {
 
