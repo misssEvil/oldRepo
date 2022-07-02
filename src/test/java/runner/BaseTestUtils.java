@@ -14,39 +14,16 @@ public final class BaseTestUtils {
     private static Properties properties;
     private static final ChromeOptions chromeOptions;
 
-     private static void initProperties() {
-         if (properties == null){
-             properties = new Properties();
-             properties.getProperty("default.chrome_options", System.getenv("chrome_options"));
-         }
-         else {
-
-             try {
-                 InputStream inputStream = BaseTestUtils.class.getClassLoader().getResourceAsStream("local.properties");
-                 properties.load(inputStream);
-             } catch (IOException ex) {
-
-             }
-         }
-     }
-
-     static {
-         initProperties();
-
-         chromeOptions = new ChromeOptions();
-         String options = properties.getProperty("default.chrome_options");
-         if (options != null){
-             for (String argument : options.split(";")){
-                 chromeOptions.addArguments(argument);
-             }
-         }
-         WebDriverManager.chromedriver().setup();
-     }
+    static {
+        chromeOptions = new ChromeOptions();
+        chromeOptions.addArguments("--window-size=1920,1080");
+        chromeOptions.addArguments("--start-maximized");
 
 
+    }
 
     static WebDriver createDriver() {
-
+        WebDriverManager.chromedriver().setup();
         WebDriver driver = new ChromeDriver(chromeOptions);
         return driver;
     }
