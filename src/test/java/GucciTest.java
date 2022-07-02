@@ -71,7 +71,8 @@ public class GucciTest extends BaseTest {
     @Test
     public void lalaTest(){
 
-        getDriver().get(String.format("http://localhost:%s", BaseUtils.getProperties().getProperty("default.port")));
+        //getDriver().get(String.format("http://localhost:%s", BaseUtils.getProperties().getProperty("default.port")));
+        getDriver().get("http://localhost:8080");
         Assert.assertEquals(getDriver().findElement(By.xpath("//div/h1")).getText(),  "Welcome to Jenkins!");
 
         getDriver().findElement(By.name("j_username")).sendKeys("test");
@@ -82,7 +83,8 @@ public class GucciTest extends BaseTest {
     @Test
     public void logoTest(){
 
-        getDriver().get(String.format("http://localhost:%s", BaseUtils.getProperties().getProperty("default.port")));
+        //getDriver().get(String.format("http://localhost:%s", BaseUtils.getProperties().getProperty("default.port")));
+        getDriver().get("http://localhost:8080");
         Assert.assertEquals(getDriver().findElement(By.xpath("//div/h1")).getText(),  "Welcome to Jenkins!");
         Assert.assertTrue(getDriver().findElement(By.xpath("//div[@class='logo']")).isDisplayed());
     }
