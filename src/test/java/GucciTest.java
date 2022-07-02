@@ -1,4 +1,3 @@
-/*
 import java.time.Instant;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
@@ -12,8 +11,6 @@ import org.testng.annotations.Test;
 import runner.BaseTest;
 
 public class GucciTest extends BaseTest {
-
-
     @Ignore
     @Test
     public void gucciSingUpForNewsValidTest() throws InterruptedException {
@@ -59,5 +56,19 @@ public class GucciTest extends BaseTest {
         Thread.sleep(2000L);
         Assert.assertFalse(getDriver().findElement(By.cssSelector("div.form-overlay-content")).isDisplayed());
     }
+
+    @Test
+    public void searchBoxTest(){
+
+        getDriver().get("https://1lib.tw");
+        getDriver().findElement(By.id("searchFieldx")).sendKeys("architecture of happiness");
+        getDriver().findElement(By.className("inner")).click();
+
+        Assert.assertEquals(getDriver().findElement(By.linkText("The Architecture of Happiness")).getText(), "The Architecture of Happiness");
+
+
+
+    }
+
+
 }
-*/
