@@ -17,18 +17,23 @@ public final class BaseTestUtils {
      private static void initProperties() {
          if (properties == null){
              properties = new Properties();
-             properties.getProperty("default.chrome_options", System.getenv("chrome_options"));
-         }
-         else {
+             if (isServerRun()){
+                 properties.getProperty("default.chrome_options", System.getenv("chrome_options"));
+             }
+             else {
+                 try {
+                     InputStream inputStream = BaseTestUtils.class.getClassLoader().getResourceAsStream("local.properties");
+                     properties.load(inputStream);
+                 } catch (IOException ex) {
 
-             try {
-                 InputStream inputStream = BaseTestUtils.class.getClassLoader().getResourceAsStream("local.properties");
-                 properties.load(inputStream);
-             } catch (IOException ex) {
-
+                 }
              }
          }
      }
+
+    static boolean isServerRun() {
+        return System.getenv("CI_RUN") != null;
+    }
 
      static {
          initProperties();
