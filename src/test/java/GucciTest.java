@@ -9,6 +9,7 @@ import org.testng.Assert;
 import org.testng.annotations.Ignore;
 import org.testng.annotations.Test;
 import runner.BaseTest;
+import runner.BaseUtils;
 
 public class GucciTest extends BaseTest {
     @Ignore
@@ -61,13 +62,29 @@ public class GucciTest extends BaseTest {
     public void searchBoxTest(){
 
         getDriver().get("https://1lib.tw");
-        getDriver().findElement(By.id("searchFieldx")).sendKeys("architecture of happiness");
+        getDriver().findElement(By.id("searchFieldx")).sendKeys("untamed");
         getDriver().findElement(By.className("inner")).click();
 
-        Assert.assertEquals(getDriver().findElement(By.linkText("The Architecture of Happiness")).getText(), "The Architecture of Happiness");
+        Assert.assertEquals(getDriver().findElement(By.linkText("Untamed")).getText(), "Untamed");
+    }
 
+    @Test
+    public void lalaTest(){
 
+        getDriver().get(String.format("http://localhost:%s", BaseUtils.getProperties().getProperty("default.port")));
+        Assert.assertEquals(getDriver().findElement(By.xpath("//div/h1")).getText(),  "Welcome to Jenkins!");
 
+        getDriver().findElement(By.name("j_username")).sendKeys("test");
+        getDriver().findElement(By.name("j_password")).sendKeys("test");
+        getDriver().findElement(By.name("Submit")).click();
+    }
+
+    @Test
+    public void logoTest(){
+
+        getDriver().get(String.format("http://localhost:%s", BaseUtils.getProperties().getProperty("default.port")));
+        Assert.assertEquals(getDriver().findElement(By.xpath("//div/h1")).getText(),  "Welcome to Jenkins!");
+        Assert.assertTrue(getDriver().findElement(By.xpath("//div[@class='logo']")).isDisplayed());
     }
 
 
