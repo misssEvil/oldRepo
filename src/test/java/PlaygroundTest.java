@@ -2,6 +2,7 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -12,7 +13,11 @@ public class PlaygroundTest {
     @Test
     public void firstTest(){
         WebDriverManager.chromedriver().setup();
-        WebDriver driver = new ChromeDriver();
+        ChromeOptions chromeOptions = new ChromeOptions();
+        chromeOptions.addArguments("--start-maximized");
+
+
+        WebDriver driver = new ChromeDriver(chromeOptions);
 
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 
