@@ -1,8 +1,9 @@
-name: CI
+name: CI 
 
 on:
+
   pull_request:
-    branches: [master]
+    branches: [ "master" ]
 
 jobs:
   run-test:
@@ -10,26 +11,25 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Git clone
-        uses: actions/checkout@v2
-        with:
-          fetch-depth: 0
-
-      - name: Install JDK
-        uses: actions/setup-java@v2
-        with:
-          java-version: '11'
-          distribution: 'adopt'
-
-      - name: Сache maven
-        uses: actions/cache@v2
-        with:
-          path: ~/.m2/repository
-          key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
-          restore-keys: ${{ runner.os }}-maven-
-
-      - name: Maven test
-        run: mvn test
-        env:
-          CHROME_OPTIONS: --disable-gpu;--no-sandbox;--disable-dev-shm-usage;headless;--window-size=1920,1080; --remote-debugging-port=9222
+    - name: Checkout
+      uses: actions/checkout@v3
+    
+    - name: Setup JDK 11 with cache Maven
+      uses: actions/setup-java@v3
+      with:
+        java-version: '11'
+        distribution: 'temurin'
+        cache: maven
+            
+      
+    - name: Maven test
+      run: mvn clean test 
+      env:
+          CHROME_OPTIONS: --disable-gpu;--no-sandbox;--disable-dev-shm-usage;--headless;--window-size=1920,1080
+          APP_OPTIONS: port=8080;admin.username=${{ secrets.ADMIN_USER }};admin.password=${{ secrets.ADMIN_PAS }}
           CI_RUN: true
+      continue-on-error: true
+      
+    #- name: Check on failures
+    #  if: steps.test.outcome != 'success'
+    #  run: exit 1
