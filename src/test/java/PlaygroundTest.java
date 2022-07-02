@@ -13,6 +13,7 @@ public class PlaygroundTest {
     public void firstTest(){
         WebDriverManager.chromedriver().setup();
         WebDriver driver = new ChromeDriver();
+
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 
         driver.get("https://1lib.tw");
