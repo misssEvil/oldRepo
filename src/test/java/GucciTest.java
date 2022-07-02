@@ -69,23 +69,23 @@ public class GucciTest extends BaseTest {
     }
 
     @Test
-    public void lalaTest(){
+    public void lalaGTest(){
 
         //getDriver().get(String.format("http://localhost:%s", BaseUtils.getProperties().getProperty("default.port")));
         getDriver().get("http://localhost:8080");
         Assert.assertEquals(getDriver().findElement(By.xpath("//div/h1")).getText(),  "Welcome to Jenkins!");
 
-        getDriver().findElement(By.name("j_username")).sendKeys("test");
+        getDriver().findElement(By.name("j_username")).sendKeys("Gucci");
         getDriver().findElement(By.name("j_password")).sendKeys("test");
         getDriver().findElement(By.name("Submit")).click();
     }
 
     @Test
-    public void logoTest(){
+    public void logoGTest(){
 
         //getDriver().get(String.format("http://localhost:%s", BaseUtils.getProperties().getProperty("default.port")));
         getDriver().get("http://localhost:8080");
-        Assert.assertEquals(getDriver().findElement(By.xpath("//div/h1")).getText(),  "Welcome to Jenkins!");
+       // Assert.assertEquals(getDriver().findElement(By.xpath("//div/h1")).getText(),  "Welcome to Jenkins!");
         Assert.assertTrue(getDriver().findElement(By.xpath("//div[@class='logo']")).isDisplayed());
     }
 

@@ -7,7 +7,7 @@ import runner.BaseUtils;
 public class JenkinsTests extends BaseTest {
 
    @Test
-    public void lalaTest(){
+    public void lalaJTest(){
 
        getDriver().get(String.format("http://localhost:%s", BaseUtils.getProperties().getProperty("default.port")));
        Assert.assertEquals(getDriver().findElement(By.xpath("//div/h1")).getText(),  "Welcome to Jenkins!");
