@@ -22,6 +22,11 @@ public class PropertyUtils {
             properties = new Properties();
             if (isServerRun()) {
                 properties.setProperty("default.chrome_options", System.getenv("chrome_options"));
+
+                for (String option : System.getenv("app_options").split(";")) {
+                    String[] optionArr = option.split("=");
+                    properties.setProperty("default." + optionArr[0], optionArr[1]);
+                }
             } else {
                 try {
                     InputStream inputStream = PropertyUtils.class.getClassLoader().getResourceAsStream("local.properties");
