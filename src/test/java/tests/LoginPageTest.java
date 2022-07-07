@@ -23,9 +23,11 @@ public class LoginPageTest extends BaseTest {
         loginElements.getPasswordField().sendKeys("test");
         loginElements.getSubmitBtn().click();
         getWait20();
+
+        Assert.assertTrue(getDriver().findElement(By.xpath("//a[@href='/user/test']")).isEnabled());
     }
 
-    @Test
+   /* @Test
     public void lalaLPTest(){
 
         getDriver().get(String.format("http://localhost:%s", PropertyUtils.getProperties().getProperty("default.port")));
@@ -47,7 +49,7 @@ public class LoginPageTest extends BaseTest {
         Assert.assertTrue(getDriver().findElement(By.xpath("//div[@class='logo']")).isDisplayed());
     }
 
-
+*/
 
 
 
