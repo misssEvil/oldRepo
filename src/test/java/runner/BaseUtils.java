@@ -14,8 +14,6 @@ import static runner.PropertyUtils.chromeOptions;
 
 public final class BaseUtils {
 
-
-
     static WebDriver createDriver() {
         WebDriverManager.chromedriver().setup();
         WebDriver driver = new ChromeDriver(PropertyUtils.chromeOptions);
