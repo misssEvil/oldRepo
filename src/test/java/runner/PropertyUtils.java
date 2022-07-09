@@ -21,7 +21,7 @@ public class PropertyUtils {
        if (System.getenv("CI_RUN") != null) {
                 properties.setProperty("default.chrome_options", System.getenv("CHROME_OPTIONS"));
 
-                for (String option : System.getenv("app_options").split(";")) {
+                for (String option : System.getenv("APP_OPTIONS").split(";")) {
                     String[] optionArr = option.split("=");
                     properties.setProperty("default." + optionArr[0], optionArr[1]);
                 }
