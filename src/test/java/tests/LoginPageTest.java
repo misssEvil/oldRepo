@@ -15,6 +15,7 @@ public class LoginPageTest extends BaseTest {
     @Test
     public void secondTest(){
         getWait20();
+        Assert.assertTrue(getDriver().findElement(By.xpath("//a[@href='/logout']")).isEnabled());
         getDriver().findElement(By.xpath("//a[@href='/logout']")).click();
 
         LoginPage loginElements = new LoginPage(getDriver());
@@ -31,6 +32,7 @@ public class LoginPageTest extends BaseTest {
    @Test
     public void logoWelcomeLPTest(){
         getWait20();
+       Assert.assertTrue(getDriver().findElement(By.xpath("//a[@href='/logout']")).isEnabled());
         getDriver().findElement(By.xpath("//a[@href='/logout']")).click();
 
         getDriver().get(String.format("http://localhost:%s", PropertyUtils.getProperties().getProperty("default.port")));
