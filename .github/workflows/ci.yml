@@ -41,8 +41,7 @@ jobs:
         password: ${{ secrets.DOCKER_PASSWORD }}  
         
     - name: Run Jenkins in Docker
-      #run: docker run -d -p 8080:8080 -p 50000:50000 --name my_jenkin jenkins/jenkins:lts-jdk11
-      run: docker run --rm -d -p 8080:8080 -p 50000:50000 --name my_jenkins -v jenkins_home:/var/jenkins_home esrednitskaya/jenkinsci_jh_2.332_jdk11
+      run: docker run --rm -d -p 8080:8080 -p 50000:50000 --name new_j -v jenkins_home:/var/jenkins_home goldenjenkins/repo
 
     - name: Change wrapper permissions
       run: chmod +x ./.github/wait-for-jenkins.sh 
@@ -58,6 +57,6 @@ jobs:
           CI_RUN: true
       continue-on-error: true
       
-    #- name: Check on failures
-    #  if: steps.test.outcome != 'success'
-    #  run: exit 1
+    - name: Check on failures
+      if: steps.test.outcome != 'success'
+      run: exit 1
