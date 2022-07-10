@@ -4,7 +4,7 @@ times=15
 while ! curl -sSL 'http://localhost:8080/login?from=%2F' 2>&1 \
              | grep '<html' >/dev/null; do
     echo 'Waiting for the Jenkins'
-    sleep 10
+    sleep 40
     times=$(($times - 1))
 
     if [ $times -le 0 ]; then

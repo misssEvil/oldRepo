@@ -41,7 +41,6 @@ jobs:
         password: ${{ secrets.DOCKER_PASSWORD }}  
         
     - name: Run Jenkins in Docker
-      #run: docker run -d -p 8080:8080 -p 50000:50000 --name my_jenkin jenkins/jenkins:lts-jdk11
       run: docker run --rm -d -p 8080:8080 -p 50000:50000 --name my_jenkins -v jenkins_home:/var/jenkins_home esrednitskaya/jenkinsci_jh_2.332_jdk11
 
     - name: Change wrapper permissions
@@ -54,10 +53,10 @@ jobs:
       run: mvn clean test 
       env:
           CHROME_OPTIONS: --disable-gpu;--no-sandbox;--disable-dev-shm-usage;--headless;--window-size=1920,1080
-          APP_OPTIONS: port=8080;admin.username=${{ secrets.ADMIN_USER }};admin.password=${{ secrets.ADMIN_PAS }}
+          APP_OPTIONS: port=8080;admin.username=test;admin.password=test
           CI_RUN: true
       continue-on-error: true
       
-    #- name: Check on failures
-    #  if: steps.test.outcome != 'success'
-    #  run: exit 1
+    - name: Check on failures
+      if: steps.test.outcome != 'success'
+      run: exit 1
