@@ -41,7 +41,7 @@ jobs:
         password: ${{ secrets.DOCKER_PASSWORD }}  
         
     - name: Run Jenkins in Docker
-      run: docker run --rm -d -p 9090:9090 -p 50000:50000 --name run_j -v jenkins_home:/var/jenkins_home goldenjenkins/repo
+      run: docker run --rm -d -p 8080:8080 -p 50000:50000 --name run_nj -v jenkins_home:/var/jenkins_home goldenjenkins/repo
 
     - name: Change wrapper permissions
       run: chmod +x ./.github/wait-for-jenkins.sh 
