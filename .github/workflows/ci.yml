@@ -53,7 +53,7 @@ jobs:
       run: mvn clean test 
       env:
           CHROME_OPTIONS: --disable-gpu;--no-sandbox;--disable-dev-shm-usage;--headless;--window-size=1920,1080
-          APP_OPTIONS: port=8080;admin.username=${{ secrets.ADMIN_USER }};admin.password=${{ secrets.ADMIN_PAS }}
+          APP_OPTIONS: port=8080;admin.username=test;admin.password=test
           CI_RUN: true
       continue-on-error: true
       
