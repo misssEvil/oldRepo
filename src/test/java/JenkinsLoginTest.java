@@ -11,7 +11,7 @@ public class JenkinsLoginTest extends BaseTest {
            /* Assert.assertTrue(getDriver().findElement(By.xpath("//a[@href='/logout']")).isEnabled());
             getDriver().findElement(By.xpath("//a[@href='/logout']")).click();
 */
-            getDriver().get("http://localhost:8080");
+            getDriver().get("http://localhost:9090");
             Assert.assertEquals(getDriver().findElement(By.xpath("//div/h1")).getText(),  "Welcome to Jenkins!");
 
             getDriver().findElement(By.name("j_username")).sendKeys("test");
